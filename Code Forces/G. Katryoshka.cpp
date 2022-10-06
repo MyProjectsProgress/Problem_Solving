@@ -3,12 +3,15 @@
 using namespace std;
 
 int main(){
-    // 458 81 280
     bool flag1 = true, flag2 = true;
     long long eye,mouth,body;
     long long sum = 0;
     cin>>eye>>mouth>>body;
-    if(eye == 0 || body == 0) {
+
+
+//------------------------------------------------------------------
+    // Time limit exceed code.
+    /* if(eye == 0 || body == 0) {
         cout<<0;
         return 0;
     }
@@ -40,6 +43,5 @@ int main(){
             cout<<sum;
             return 0;
         }
-    }
-    return 0;
+    } */
 }
