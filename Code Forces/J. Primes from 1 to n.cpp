@@ -18,4 +18,6 @@ int main(){
         }
         if (flag) cout<<i<<" ";
     }
+
+    return 0;
 }
