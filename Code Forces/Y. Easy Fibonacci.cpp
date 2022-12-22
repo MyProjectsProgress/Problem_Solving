@@ -2,21 +2,16 @@
 
 using namespace std;
 
-
-
-int fib(int n){
-    if (n <= 1) return 1;
-    else {
-        //cout<<(fib(n-1) + fib(n-2))<<" ";
-        return(fib(n-1) + fib(n-2));
-    }
-
-}
-
 int main (){
-    int n;
+    int n,sum1{0},sum2{1},sum{0};
     cin>>n;
-    cout<<fib(n);
+    cout<<0<<" ";
+    for(int i =1; i<n; i++){
+        sum1 = sum2;
+        sum2 = sum;
+        sum= sum1 + sum2;
+        cout<<sum<<" ";
+    }
     return 0;
 }
 
