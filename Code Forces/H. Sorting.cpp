@@ -9,18 +9,19 @@ int main(){
 
     for(int i = 0; i<n; i++){ int x; cin>>x; arr[i] = x; }
 
-    for(int i = 0; i<n-1; i++) {
+    for(int i = 0; i<n-1; i++) { // n-1 as the last element is already sorted
 
-    mini = i; // arr[0] arr[1] arr[2] arr[3]
+    mini = i;
 
-    for(int j = i; j<n; j++) {
+    for(int j = i; j<n; j++) { // j better be i+1 as you don't need to compare the first element with itself every time!
 
         if(arr[j]<arr[mini]) {
             mini=j;
         }
-
     }
+
     swap(arr[i],arr[mini]);
+
     }
 
     for(int i = 0; i<n; i++){ cout<<arr[i]<<" "; }
