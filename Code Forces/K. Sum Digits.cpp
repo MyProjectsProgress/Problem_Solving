@@ -9,7 +9,7 @@ int main(){
     cin>>number;
     int arr[n];
 
-    for(int i = 0; i<n; i++) { sum = sum + (number[i]-'0'); cout<<number[i]<<endl; }
+    for(int i = 0; i<n; i++) sum = sum + (number[i]-'0');
 
     //for(int i = 0; i<n; i++) sum += arr[i];
 
