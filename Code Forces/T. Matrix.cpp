@@ -1,24 +1,42 @@
-#include <bits/stdc++.h>
+#include <cmath>
+#include <vector>
+#include <iostream>
+#include <iomanip>
 
-using namespace std;
-
-int main(){
-
-    int n;
-    long long sum1{0},sum2{0};
-    cin>>n;
-    int arr[n][n];
-
-    for(int i=0; i<n; i++) for(int j=0; j<n; j++) { int x; cin>>x; arr[i][j] = x; }
-
-    for(int i=0; i<n; i++)
-    for(int j=0; j<n; j++)
-    {
-        if(i == j) sum1+=arr[i][j];
-        if( n - 1 - j == i ) sum2+=arr[i][j];
-    }
-
-    cout<<abs(sum1-sum2);
-
-    return 0;
+double gaussian( double x, double mu, double sigma ) {
+    const double a = ( x - mu ) / sigma;
+    return std::exp( -0.5 * a * a );
 }
+
+typedef std::vector<double> kernel_row;
+typedef std::vector<kernel_row> kernel_type;
+
+kernel_type produce2dGaussianKernel (int kernelRadius) {
+    double sigma = kernelRadius/2.;
+    kernel_type kernel2d(2*kernelRadius+1, kernel_row(2*kernelRadius+1));
+    double sum = 0;
+    // compute values
+    for (int row = 0; row < kernel2d.size(); row++)
+        for (int col = 0; col < kernel2d[row].size(); col++) {
+            double x = gaussian(row, kernelRadius, sigma)
+                       * gaussian(col, kernelRadius, sigma);
+            kernel2d[row][col] = x;
+            sum += x;
+        }
+    // normalize
+    for (int row = 0; row < kernel2d.size(); row++)
+        for (int col = 0; col < kernel2d[row].size(); col++)
+            kernel2d[row][col] /= sum;
+    return kernel2d;
+}
+
+int main() {
+    kernel_type kernel2d = produce2dGaussianKernel(3);
+    std::cout << std::setprecision(5) << std::fixed;
+    for (int row = 0; row < kernel2d.size(); row++) {
+        for (int col = 0; col < kernel2d[row].size(); col++)
+            std::cout << kernel2d[row][col] << ' ';
+        std::cout << '\n';
+    }
+}
+
