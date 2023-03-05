@@ -10,13 +10,13 @@ int main(){
 
     for(int i=0; i<n; i++)
     for(int j=0; j<m; j++)
-    { int x; cin>>x; arr[i][m] = x; }
+    { int x; cin>>x; arr[i][j] = x; }
 
     for(int j=0; j<n; j++)
     {
         for(int i=m-1; i>=0; i--)
         {
-            cout<<arr[i][j]<<" ";
+            cout<<arr[j][i]<<" ";
         }
         cout<<endl;
     }
