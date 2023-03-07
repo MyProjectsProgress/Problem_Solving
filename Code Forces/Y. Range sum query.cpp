@@ -20,7 +20,6 @@ int main(){
         sum = 0;
     }
 
-
     for(int i=0; i<sums.size(); i++) { cout<<sums[i]<<endl; }
 
     return 0;
