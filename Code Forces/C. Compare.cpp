@@ -4,18 +4,35 @@
 using namespace std;
 
 int main(){
+    /* sort */
+    /*
     string s;
     cin>>s;
     int l,r;
     char temp;
-    cin>>l,r;
+    cin>>l>>r;
 
-    for (int i = 0; i < l-r+1; i++)
-    for (int j = l; j < l-r; j++)
+    for (int i = l-1; i < r; i++)
+    for (int j = l-1; j < r; j++)
       if (s[j] > s[j + 1]){ temp = s[j]; s[j] = s[j + 1]; s[j + 1] = temp;}
 
     cout<<s;
     return 0;
+    */
+    /* reverse */
+    string s;
+    cin>>s;
+    int l,r;
+    char temp;
+    cin>>l>>r;
+
+    for (int i = l-1; i < r; i++)
+    for (int j = l-1; j < r; j++)
+      { temp = s[j]; s[j] = s[r-j]; s[r-j] = temp; }
+
+    cout<<s;
+    return 0;
+
 }
 
 /*

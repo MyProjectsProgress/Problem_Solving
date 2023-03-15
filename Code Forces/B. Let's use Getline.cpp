@@ -11,7 +11,6 @@ int main(){
         if(s[i] != '\\')
         cout<<s[i];
         else return 0;
-
     }
 
     return 0;
