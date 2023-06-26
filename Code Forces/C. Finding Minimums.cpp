@@ -3,29 +3,40 @@
 using namespace std;
 
 int main(){
-    float n,k;
-    long long endd{0}, start{0}, mini {1000000000000},x;
-    int i,s;
+    int n, range, start{0}, x;
+    long long mini{1000000000000};
+    vector <int> minimums;
 
-    cin>>n>>k;
-    int arr[int(n)];
+    cin>>n>>range;
 
-    for(i =0; i<n; i++){
-        cin>>x;
-        arr[i] = x;
+    int lol = range;
+
+    int arr[n];
+
+    for(int i=0; i<n; i++){ cin>>x; arr[i] = x; }
+
+    while(range <= n)
+    {
+        for(int i=start; i<range; i++)
+        {
+            if(arr[i] < mini) mini = arr[i];
+        }
+        minimums.push_back(mini);
+        start = range;
+        range = range + lol;
+        mini = 1000000000000;
     }
 
-    if(k!=1){ s = ceil(n/k); endd = k;}
-    else    { s = 1; endd = n;}
+    if (n%lol!=0)
+    {
+        for(int i=start; i<n; i++)
+        {
+            if(arr[i] < mini) mini = arr[i];
+        }
+        minimums.push_back(mini);
+    }
 
-    for(int j=1; j<=s; j++){
-    for(i=start; i<endd; i++){
-        if (i<n) if (arr[i]<mini) mini = arr[i];
-    }
-    cout<<mini<<" ";
-    start = i;
-    endd +=ceil(n/k);
-    mini = 1000000;
-    }
+    for(int i=0; i<minimums.size(); i++) cout<<minimums[i]<<" ";
+
     return 0;
 }

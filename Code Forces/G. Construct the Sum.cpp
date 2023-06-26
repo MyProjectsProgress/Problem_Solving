@@ -11,31 +11,31 @@ using namespace std;
 */
 
 int main(){
-    int t,n,c{0};
-    long long sum{0},s;
-    int res[100000];
+
+    long long sum{0}, summation, t, threshold;
 
     cin>>t;
 
     while(t--)
     {
-        cin>>n>>s;
-
-        if (n*(n+1)/2 < s) cout<<-1;
+        cin>>threshold>>summation;
+        if ( ((threshold * (threshold + 1)) / 2) < summation) cout<<-1<endl;
         else{
-            for(int i=n; i>=1; i--){ // 5  4 3  2 1
-                if(sum+i <= s){
-                    res[c] = i;
-                    c++;
+            vector<int> result;
+            for(int i=threshold; i>=1; i--)
+            {
+                if(sum + i <= summation){
+                    sum+=i;
+                    result.push_back(i);
                 }
+                if(sum == summation) break;
             }
+            for(int i=0; i<result.size(); i++) cout<<result[i]<<" ";
+            cout<<endl;
         }
-
-        for(int i=0; i<=c; i++) cout<<res[i]<<" ";
-        cout<<endl;
-        c = 0;
-        sum = 0;
     }
+
+
 
     return 0;
 }
